@@ -1,4 +1,3 @@
-const { Person } = require('../../lesson-1/FS-Wk6L1-Lab-Sequelize-Acme/db');
 const {
     db,Assignment
 } = require('./db');
@@ -17,6 +16,8 @@ const createAssignments = async()=>{
         assignment1,assignment2,assignment3,assignment4,assignment5
     };
 };
+
+
 
 const seedDB = async()=>{
     await db.sync({force:true,logging:false});
