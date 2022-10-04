@@ -2,6 +2,7 @@ const {
     db,Assignment,Classroom,Student,StudentAssignment,StudentClassroom
 } = require('./db');
 
+// creating assignment instances
 const createAssignments = async()=>{
     const assignments = [
         {name:'Assignment 1',points:10},
@@ -17,6 +18,7 @@ const createAssignments = async()=>{
     };
 };
 
+// creating classroom instances
 const createClassrooms = async()=>{
     const classrooms = [
         {name:'AP CSP'},
@@ -32,6 +34,7 @@ const createClassrooms = async()=>{
     };
 };
 
+// creating student instances
 const createStudents = async()=>{
     const students = [
         {name:'Jack'},
@@ -47,6 +50,7 @@ const createStudents = async()=>{
     };
 };
 
+// creating through table instances for many-to-many student/assignment relationship
 const createStudentAssignments = async(students,assignments)=>{
     const studentAssignments = [
         {studentId:students.jack.id,assignmentId:assignments.assignment1.id},
@@ -62,6 +66,7 @@ const createStudentAssignments = async(students,assignments)=>{
     return await Promise.all(promises);
 };
 
+// creating through table instances for many-to-many student/classroom relationship
 const createStudentClassrooms = async(students,classrooms)=>{
     const studentClassrooms = [
         {studentId:students.jack.id,classroomId:classrooms.apcsp.id},
@@ -74,6 +79,7 @@ const createStudentClassrooms = async(students,classrooms)=>{
     return await Promise.all(promises);
 };
 
+// main seed function
 const seedDB = async()=>{
     await db.sync({force:true,logging:false});
     try{
