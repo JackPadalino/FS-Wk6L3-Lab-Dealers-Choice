@@ -56,11 +56,20 @@ const createStudentAssignments = async(students,assignments)=>{
         {studentId:students.ariana.id,assignmentId:assignments.assignment5.id},
     ];
     const throughPromises = studentAssignments.map((studentAssignment)=>StudentAssignment.create(studentAssignment));
-    await Promise.all(throughPromises);
+    return await Promise.all(throughPromises);
 };
 
 const createStudentClassrooms = async(students,classrooms)=>{
-    return null;
+    const studentClassrooms = [
+        {studentId:students.jack.id,classroomId:classrooms.apcsp.id},
+        {studentId:students.jack.id,classroomId:classrooms.algebra.id},
+        {studentId:students.jasmine.id,classroomId:classrooms.apcsp.id},
+        {studentId:students.jack.id,classroomId:classrooms.algebra.id},
+        {studentId:students.sofia.id,classroomId:classrooms.apcsp.id},
+        {studentId:students.sofia.id,classroomId:classrooms.algebra.id},
+    ];
+    const throughPromises = studentClassrooms.map((studentClassroom)=>StudentClassroom.create(studentClassroom));
+    return await Promise.all(throughPromises);
 };
 
 const seedDB = async()=>{
@@ -69,8 +78,8 @@ const seedDB = async()=>{
        const assignments = await createAssignments();
        const classrooms = await createClassrooms();
        const students = await createStudents();
-       await createStudentAssignments(students,assignments);
-       //await createStudentClassrooms(students,classrooms);
+       //await createStudentAssignments(students,assignments);
+       await createStudentClassrooms(students,classrooms);
     }catch(error){
         console.log(error);
     };
