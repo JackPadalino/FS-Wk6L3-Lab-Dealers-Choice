@@ -49,7 +49,11 @@ const createStudents = async()=>{
 
 const createStudentAssignments = async(students,assignments)=>{
     const studentAssignments = [
-        {studentId:students.jack.id,assignmentId:assignments.assignment1.id}
+        {studentId:students.jack.id,assignmentId:assignments.assignment1.id},
+        {studentId:students.jasmine.id,assignmentId:assignments.assignment2.id},
+        {studentId:students.sofia.id,assignmentId:assignments.assignment3.id},
+        {studentId:students.lady.id,assignmentId:assignments.assignment4.id},
+        {studentId:students.ariana.id,assignmentId:assignments.assignment5.id},
     ];
     const throughPromises = studentAssignments.map((studentAssignment)=>StudentAssignment.create(studentAssignment));
     await Promise.all(throughPromises);
