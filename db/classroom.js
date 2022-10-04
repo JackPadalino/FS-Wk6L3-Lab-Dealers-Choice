@@ -2,11 +2,11 @@ const Sequelize = require("sequelize");
 const db = require("./db");
 
 const Classroom = db.define('classroom',{
-    id:{
+    /* id:{
         type:Sequelize.UUID,
         defaultValue:Sequelize.UUIDV4,
         primaryKey:true
-    },
+    }, */
     name:{
         type:Sequelize.STRING,
         allowNull:false,
