@@ -13,6 +13,7 @@ const createAssignments = async()=>{
     ];
     const promises = assignments.map((assignment)=>Assignment.create(assignment));
     const [assignment1,assignment2,assignment3,assignment4,assignment5] = await Promise.all(promises);
+    //console.log(Object.keys(Assignment.prototype));
     return {
         assignment1,assignment2,assignment3,assignment4,assignment5
     };
@@ -29,6 +30,7 @@ const createClassrooms = async()=>{
     ];
     const promises = classrooms.map((classroom)=>Classroom.create(classroom));
     const [apcsp,algebra,livingEnv,globalHist,econGov] = await Promise.all(promises);
+    //console.log(Object.keys(Classroom.prototype));
     return {
         apcsp,algebra,livingEnv,globalHist,econGov
     };
@@ -45,6 +47,7 @@ const createStudents = async()=>{
     ];
     const promises = students.map((student)=>Student.create(student));
     const [jack,jasmine,sofia,lady,ariana] = await Promise.all(promises);
+    //console.log(Object.keys(Student.prototype));
     return {
         jack,jasmine,sofia,lady,ariana
     };
