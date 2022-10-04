@@ -1,5 +1,5 @@
 const {
-    db,Assignment,Classroom
+    db,Assignment,Classroom,Student
 } = require('./db');
 
 const createAssignments = async()=>{
@@ -11,10 +11,7 @@ const createAssignments = async()=>{
         {name:'Assignment 5',points:5},
     ];
     const assignmentPromises = assignments.map((assignment)=>Assignment.create(assignment));
-    const [assignment1,assignment2,assignment3,assignment4,assignment5] = await Promise.all(assignmentPromises);
-    return {
-        assignment1,assignment2,assignment3,assignment4,assignment5
-    };
+    return await Promise.all(assignmentPromises);
 };
 
 const createClassrooms = async()=>{
@@ -26,17 +23,27 @@ const createClassrooms = async()=>{
         {name:'Economics & Government'},
     ];
     const classroomPromises = classrooms.map((classroom)=>Classroom.create(classroom));
-    const [apcsp,alebra,livingEnv,globalHist,econGov] = await Promise.all(classroomPromises);
-    return {
-        apcsp,alebra,livingEnv,globalHist,econGov
-    };
+    return await Promise.all(classroomPromises);
+};
+
+const createStudents = async()=>{
+    const students = [
+        {name:'Jack'},
+        {name:'Jasmine'},
+        {name:'Sofia'},
+        {name:'Lady'},
+        {name:'Ariana'},
+    ];
+    const studentPromises = students.map((student)=>Student.create(student));
+    return await Promise.all(studentPromises);
 };
 
 const seedDB = async()=>{
     await db.sync({force:true,logging:false});
     try{
-       const assignments = await createAssignments();
-       const classrooms = await createClassrooms();
+       await createAssignments();
+       await createClassrooms();
+       await createStudents();
     }catch(error){
         console.log(error);
     };
