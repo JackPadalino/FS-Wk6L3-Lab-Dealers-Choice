@@ -3,11 +3,11 @@ const Assignment = require('./assignment');
 const Classroom = require('./classroom');
 const Student = require('./student');
 
-Assignment.belongsToMany(Student,{through:'student|assignment'});
-Student.belongsToMany(Assignment,{through:'student|assignment'});
+Student.belongsToMany(Assignment,{through:'studentassignment'});
+Assignment.belongsToMany(Student,{through:'studentassignment'});
 
-Student.belongsToMany(Classroom,{through:'student|classroom'});
-Classroom.belongsToMany(Student,{through:'student|classroom'});
+Student.belongsToMany(Classroom,{through:'studentclassroom'});
+Classroom.belongsToMany(Student,{through:'studentclassroom'});
 
 module.exports = {
     db,
