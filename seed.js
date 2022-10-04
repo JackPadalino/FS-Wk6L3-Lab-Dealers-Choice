@@ -1,5 +1,5 @@
 const {
-    db,Assignment
+    db,Assignment,Classroom
 } = require('./db');
 
 const createAssignments = async()=>{
@@ -17,15 +17,29 @@ const createAssignments = async()=>{
     };
 };
 
-
+const createClassrooms = async()=>{
+    const classrooms = [
+        {name:'AP CSP'},
+        {name:'Algebra'},
+        {name:'Living Environment'},
+        {name:'Global History'},
+        {name:'Economics & Government'},
+    ];
+    const classroomPromises = classrooms.map((classroom)=>Classroom.create(classroom));
+    const [apcsp,alebra,livingEnv,globalHist,econGov] = await Promise.all(classroomPromises);
+    return {
+        apcsp,alebra,livingEnv,globalHist,econGov
+    };
+};
 
 const seedDB = async()=>{
     await db.sync({force:true,logging:false});
     try{
        const assignments = await createAssignments();
+       const classrooms = await createClassrooms();
     }catch(error){
         console.log(error);
-    }
+    };
 };
 
 seedDB();
