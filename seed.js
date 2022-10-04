@@ -50,13 +50,16 @@ const createStudents = async()=>{
 const createStudentAssignments = async(students,assignments)=>{
     const studentAssignments = [
         {studentId:students.jack.id,assignmentId:assignments.assignment1.id},
+        {studentId:students.jack.id,assignmentId:assignments.assignment2.id},
         {studentId:students.jasmine.id,assignmentId:assignments.assignment2.id},
+        {studentId:students.jasmine.id,assignmentId:assignments.assignment3.id},
         {studentId:students.sofia.id,assignmentId:assignments.assignment3.id},
+        {studentId:students.sofia.id,assignmentId:assignments.assignment1.id},
         {studentId:students.lady.id,assignmentId:assignments.assignment4.id},
-        {studentId:students.ariana.id,assignmentId:assignments.assignment5.id},
+        {studentId:students.ariana.id,assignmentId:assignments.assignment5.id}
     ];
-    const throughPromises = studentAssignments.map((studentAssignment)=>StudentAssignment.create(studentAssignment));
-    return await Promise.all(throughPromises);
+    const promises = studentAssignments.map((studentAssignment)=>StudentAssignment.create(studentAssignment));
+    return await Promise.all(promises);
 };
 
 const createStudentClassrooms = async(students,classrooms)=>{
@@ -64,12 +67,11 @@ const createStudentClassrooms = async(students,classrooms)=>{
         {studentId:students.jack.id,classroomId:classrooms.apcsp.id},
         {studentId:students.jack.id,classroomId:classrooms.algebra.id},
         {studentId:students.jasmine.id,classroomId:classrooms.apcsp.id},
-        {studentId:students.jack.id,classroomId:classrooms.algebra.id},
         {studentId:students.sofia.id,classroomId:classrooms.apcsp.id},
-        {studentId:students.sofia.id,classroomId:classrooms.algebra.id},
+        {studentId:students.sofia.id,classroomId:classrooms.algebra.id}
     ];
-    const throughPromises = studentClassrooms.map((studentClassroom)=>StudentClassroom.create(studentClassroom));
-    return await Promise.all(throughPromises);
+    const promises = studentClassrooms.map((studentClassroom)=>StudentClassroom.create(studentClassroom));
+    return await Promise.all(promises);
 };
 
 const seedDB = async()=>{
@@ -78,7 +80,7 @@ const seedDB = async()=>{
        const assignments = await createAssignments();
        const classrooms = await createClassrooms();
        const students = await createStudents();
-       //await createStudentAssignments(students,assignments);
+       await createStudentAssignments(students,assignments);
        await createStudentClassrooms(students,classrooms);
     }catch(error){
         console.log(error);
