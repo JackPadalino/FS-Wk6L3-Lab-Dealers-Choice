@@ -13,7 +13,6 @@ const createAssignments = async()=>{
     ];
     const promises = assignments.map((assignment)=>Assignment.create(assignment));
     const [assignment1,assignment2,assignment3,assignment4,assignment5] = await Promise.all(promises);
-    //console.log(Object.keys(Assignment.prototype));
     return {
         assignment1,assignment2,assignment3,assignment4,assignment5
     };
@@ -30,7 +29,6 @@ const createClassrooms = async()=>{
     ];
     const promises = classrooms.map((classroom)=>Classroom.create(classroom));
     const [apcsp,algebra,livingEnv,globalHist,econGov] = await Promise.all(promises);
-    //console.log(Object.keys(Classroom.prototype));
     return {
         apcsp,algebra,livingEnv,globalHist,econGov
     };
@@ -47,7 +45,6 @@ const createStudents = async()=>{
     ];
     const promises = students.map((student)=>Student.create(student));
     const [jack,jasmine,sofia,lady,ariana] = await Promise.all(promises);
-    //console.log(Object.keys(Student.prototype));
     return {
         jack,jasmine,sofia,lady,ariana
     };
@@ -86,11 +83,14 @@ const createStudentClassrooms = async(students,classrooms)=>{
 const seedDB = async()=>{
     await db.sync({force:true,logging:false});
     try{
-       const assignments = await createAssignments();
-       const classrooms = await createClassrooms();
-       const students = await createStudents();
-       await createStudentAssignments(students,assignments);
-       await createStudentClassrooms(students,classrooms);
+        //console.log(Object.keys(Assignment.prototype));
+        //console.log(Object.keys(Student.prototype));
+        //console.log(Object.keys(Classroom.prototype));
+        const assignments = await createAssignments();
+        const classrooms = await createClassrooms();
+        const students = await createStudents();
+        await createStudentAssignments(students,assignments);
+        await createStudentClassrooms(students,classrooms);
     }catch(error){
         console.log(error);
     };
