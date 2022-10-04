@@ -9,3 +9,6 @@ At the end of this module you should have a database with models and association
 
 ### Next steps
 - Create more through table instances for StudentAssignment and StudentClassroom
+- Check out these repos to help with adding magic methods:
+    - https://github.com/rosalie0/cats_and_humans/blob/main/seed.js
+    - https://github.com/rosalie0/my-twitter/blob/main/seed.js
