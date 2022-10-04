@@ -1,5 +1,5 @@
 const {
-    db,Assignment,Classroom,Student
+    db,Assignment,Classroom,Student,StudentAssignment,StudentClassroom
 } = require('./db');
 
 const createAssignments = async()=>{
@@ -11,7 +11,10 @@ const createAssignments = async()=>{
         {name:'Assignment 5',points:5},
     ];
     const assignmentPromises = assignments.map((assignment)=>Assignment.create(assignment));
-    return await Promise.all(assignmentPromises);
+    const [assignment1,assignment2,assignment3,assignment4,assignment5] = await Promise.all(assignmentPromises);
+    return {
+        assignment1,assignment2,assignment3,assignment4,assignment5
+    };
 };
 
 const createClassrooms = async()=>{
@@ -23,7 +26,10 @@ const createClassrooms = async()=>{
         {name:'Economics & Government'},
     ];
     const classroomPromises = classrooms.map((classroom)=>Classroom.create(classroom));
-    return await Promise.all(classroomPromises);
+    const [apcsp,algebra,livingEnv,globalHist,econGov] = await Promise.all(classroomPromises);
+    return {
+        apcsp,algebra,livingEnv,globalHist,econGov
+    };
 };
 
 const createStudents = async()=>{
@@ -35,15 +41,32 @@ const createStudents = async()=>{
         {name:'Ariana'},
     ];
     const studentPromises = students.map((student)=>Student.create(student));
-    return await Promise.all(studentPromises);
+    const [jack,jasmine,sofia,lady,ariana] = await Promise.all(studentPromises);
+    return {
+        jack,jasmine,sofia,lady,ariana
+    };
+};
+
+const createStudentAssignments = async(students,assignments)=>{
+    const studentAssignments = [
+        {studentId:students.jack.id,assignmentId:assignments.assignment1.id}
+    ];
+    const throughPromises = studentAssignments.map((studentAssignment)=>StudentAssignment.create(studentAssignment));
+    await Promise.all(throughPromises);
+};
+
+const createStudentClassrooms = async(students,classrooms)=>{
+    return null;
 };
 
 const seedDB = async()=>{
     await db.sync({force:true,logging:false});
     try{
-       await createAssignments();
-       await createClassrooms();
-       await createStudents();
+       const assignments = await createAssignments();
+       const classrooms = await createClassrooms();
+       const students = await createStudents();
+       await createStudentAssignments(students,assignments);
+       //await createStudentClassrooms(students,classrooms);
     }catch(error){
         console.log(error);
     };
