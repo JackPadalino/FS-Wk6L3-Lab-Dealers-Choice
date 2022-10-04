@@ -6,3 +6,6 @@ At this point you should be familiar with setting up your database and models, a
 You can choose any subject you would like to model for this exercise. This is an opportunity to get creative! The only requirement is that you must have at least two models and at least one belongs to association on one of your models. But you may create more models and associations for more practice.
 
 At the end of this module you should have a database with models and associations between those models, and also an Express route that returns JSON data.
+
+#### Next steps
+- Seed DB with instances using correct id's
