@@ -7,5 +7,5 @@ You can choose any subject you would like to model for this exercise. This is an
 
 At the end of this module you should have a database with models and associations between those models, and also an Express route that returns JSON data.
 
-#### Next steps
-- Seed DB with instances using correct id's
+### Next steps
+- Create more through table instances for StudentAssignment and StudentClassroom
