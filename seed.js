@@ -11,8 +11,8 @@ const createAssignments = async()=>{
         {name:'Assignment 4',points:20},
         {name:'Assignment 5',points:5},
     ];
-    const assignmentPromises = assignments.map((assignment)=>Assignment.create(assignment));
-    const [assignment1,assignment2,assignment3,assignment4,assignment5] = await Promise.all(assignmentPromises);
+    const promises = assignments.map((assignment)=>Assignment.create(assignment));
+    const [assignment1,assignment2,assignment3,assignment4,assignment5] = await Promise.all(promises);
     return {
         assignment1,assignment2,assignment3,assignment4,assignment5
     };
@@ -27,8 +27,8 @@ const createClassrooms = async()=>{
         {name:'Global History'},
         {name:'Economics & Government'},
     ];
-    const classroomPromises = classrooms.map((classroom)=>Classroom.create(classroom));
-    const [apcsp,algebra,livingEnv,globalHist,econGov] = await Promise.all(classroomPromises);
+    const promises = classrooms.map((classroom)=>Classroom.create(classroom));
+    const [apcsp,algebra,livingEnv,globalHist,econGov] = await Promise.all(promises);
     return {
         apcsp,algebra,livingEnv,globalHist,econGov
     };
@@ -43,8 +43,8 @@ const createStudents = async()=>{
         {name:'Lady'},
         {name:'Ariana'},
     ];
-    const studentPromises = students.map((student)=>Student.create(student));
-    const [jack,jasmine,sofia,lady,ariana] = await Promise.all(studentPromises);
+    const promises = students.map((student)=>Student.create(student));
+    const [jack,jasmine,sofia,lady,ariana] = await Promise.all(promises);
     return {
         jack,jasmine,sofia,lady,ariana
     };
