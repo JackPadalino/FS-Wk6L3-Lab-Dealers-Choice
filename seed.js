@@ -59,7 +59,7 @@ const createStudentAssignments = async(students,assignments)=>{
         {studentId:students.jasmine.id,assignmentId:assignments.assignment3.id},
         {studentId:students.sofia.id,assignmentId:assignments.assignment3.id},
         {studentId:students.sofia.id,assignmentId:assignments.assignment1.id},
-        {studentId:students.lady.id,assignmentId:assignments.assignment4.id},
+        //{studentId:students.lady.id,assignmentId:assignments.assignment4.id},
         {studentId:students.ariana.id,assignmentId:assignments.assignment5.id}
     ];
     const promises = studentAssignments.map((studentAssignment)=>StudentAssignment.create(studentAssignment));
@@ -73,7 +73,8 @@ const createStudentClassrooms = async(students,classrooms)=>{
         {studentId:students.jack.id,classroomId:classrooms.algebra.id},
         {studentId:students.jasmine.id,classroomId:classrooms.apcsp.id},
         {studentId:students.sofia.id,classroomId:classrooms.apcsp.id},
-        {studentId:students.sofia.id,classroomId:classrooms.algebra.id}
+        {studentId:students.sofia.id,classroomId:classrooms.algebra.id},
+        {studentId:students.lady.id,classroomId:classrooms.econGov.id},
     ];
     const promises = studentClassrooms.map((studentClassroom)=>StudentClassroom.create(studentClassroom));
     return await Promise.all(promises);
