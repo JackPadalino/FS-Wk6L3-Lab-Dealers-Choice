@@ -6,18 +6,11 @@ const {
     Assignment,Student,Classroom,StudentAssignment,StudentClassroom
 } = require('../db');
 
-// GET /assignments - returns all assignments including the students who have completed it
-router.get('/',async(req,res,next)=>{
+// GET /assignments/methods - returns all the magic methods for the Assignment model
+router.get('/methods',async(req,res,next)=>{
     try{
-        const assignments = await Assignment.findAll({
-            include:[
-                {
-                    model:Student,
-                    as:'students'
-                }
-            ]
-        });
-        res.send(assignments)
+        console.log(Object.keys(Assignment.prototype));
+        res.send('Check the console!');
     }catch(error){
         next(error)
     };
@@ -36,6 +29,23 @@ router.get('/:id',async(req,res,next)=>{
         });
         //const students = await assignment.getStudents();
         res.send(assignment);
+    }catch(error){
+        next(error)
+    };
+});
+
+// GET /assignments - returns all assignments including the students who have completed it
+router.get('/',async(req,res,next)=>{
+    try{
+        const assignments = await Assignment.findAll({
+            include:[
+                {
+                    model:Student,
+                    as:'students'
+                }
+            ]
+        });
+        res.send(assignments)
     }catch(error){
         next(error)
     };
