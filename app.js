@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 //const volleyball = require('volleyball');
 //app.use(volleyball);
 const apiRouter = require('./api');
