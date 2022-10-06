@@ -48,4 +48,13 @@ router.get('/:id',async(req,res,next)=>{
     };
 });
 
+// POST /students/create - creates a new student
+
+
+// PUT /students/studentId - edits a student's information
+
+
+// DELETE /students/studentId - deletes a student record
+
+
 module.exports = router;
