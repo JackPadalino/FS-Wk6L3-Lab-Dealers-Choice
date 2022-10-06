@@ -43,7 +43,7 @@ router.get('/:id',async(req,res,next)=>{
 // POST /classrooms/create - creates a new classroom
 
 
-// PUT /classrooms/studentId - adds a student to a classroom
+// PUT /classrooms/studentId - adds students to a classroom
 
 
 // DELETE /classrooms/classroomId - deletes a classroom

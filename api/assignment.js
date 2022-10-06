@@ -78,6 +78,9 @@ router.put('/:id',async(req,res,next)=>{
     };
 });
 
+// PUT /assignments/assignmentId/addStudents - update which students have completed this assignment
+
+
 // DELETE /assignments/:id - delete an assignment
 router.delete('/:id',async(req,res,next)=>{
     try{
